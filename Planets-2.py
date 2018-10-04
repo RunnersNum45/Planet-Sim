@@ -104,12 +104,13 @@ def off(): return [(planets_list[0].pos[0]-di[0]/2)*CENTER, (planets_list[0].pos
 
 while True:
 	try:
-		while fps == 0:
-			pass
-		time.sleep(1/fps)
-		planets_list = main(planets_list)
-		draw_planets(planets_list, widget)
-		widget.bind("<Button-1>", add)
-		widget.bind("<ButtonRelease-1>", add2)
+		if fps != 0:
+			time.sleep(1/fps)
+			planets_list = main(planets_list)
+			draw_planets(planets_list, widget)
+			widget.bind("<Button-1>", add)
+			widget.bind("<ButtonRelease-1>", add2)
+		else:
+			time.sleep(0.01)
 	except:
 		break
